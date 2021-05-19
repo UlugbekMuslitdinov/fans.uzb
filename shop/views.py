@@ -1,8 +1,7 @@
-from django.db.models import query
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 
-from .models import Category, Product
+from .models import Category, Product, Phone
 from cart.forms import CartAddProductForm
 
 from django.views.generic import (
@@ -20,8 +19,6 @@ class ProductListView(ListView):
 '''
 
 
-
-
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -37,8 +34,10 @@ def product_list(request, category_slug=None):
     }
     return render(request, 'shop/product/list.html', context)
 
-
-
+class ProductListView(ListView):
+    model = Product
+    context_object_name = 'product_list'
+    template_name = 'shop/product/list.html'
 
 
 def product_detail(request, id, slug):
@@ -50,20 +49,42 @@ def product_detail(request, id, slug):
     }
     return render(request, 'shop/product/detail.html', context)
 
-class CategoryListHomeView(ListView):
-    model = Category
-    context_object_name = 'category_list'
-    template_name = 'shop/product/list.html'
+
+# class CategoryListHomeView(ListView):
+#     model = Category
+#     context_object_name = 'category_list'
+#     template_name = 'shop/product/list.html'
+
+
+class PhoneListView(ListView):
+    model = Phone
+    context_object_name = 'phone_list'
+    template_name = 'shop/phone_list.html'
+
 
 class CategoryListView(ListView):
     model = Category
     context_object_name = 'category_list'
-    template_name = 'shop/product/category_list.html'
+    template_name = 'shop/category_list.html'
+
 
 class CategoryDetailView(DetailView):
     model = Category
     context_object_name = 'category'
     template_name = 'shop/product/category_detail.html'
+
+
+class PhoneListView(ListView):
+    model = Phone
+    template_name = 'shop/category_list.html'
+    context_object_name = 'phone_list'
+
+
+class PhoneDetailView(DetailView):
+    model = Phone
+    context_object_name = 'phone'
+    template_name = 'shop/product/phone_detail.html'
+
 
 class SearchResultsListView(ListView):
     model = Product

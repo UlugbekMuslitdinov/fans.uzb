@@ -1,14 +1,8 @@
 from django.contrib import admin
 
-from .models import Category, Product, Measurement
+from .models import Product, Phone
 # Register your models here.
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
-    prepopulated_fields = {'slug': ('name',)}
-
-
-admin.site.register(Category, CategoryAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display =['name', 'slug', 'price', 'stock', 'available', 'created_at', 'updated_at']
@@ -16,11 +10,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['price', 'stock', 'available']
     prepopulated_fields = {'slug': ('name',)}
 
+class PhoneAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
 
 
 admin.site.register(Product, ProductAdmin)
-
-#myModels = [Category, Product]
-
-admin.site.register(Measurement)
+admin.site.register(Phone, PhoneAdmin)
 
