@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+
+{% block content %}
+<main>
+    <section class="find_text">
+        <h1>Qidiruv natijalari</h1>
+    </section>
+    <section class="poisk2">
+
+
+
+        <div class="container-fluid">
+
+            <div class="poisk_row">
+
+                {% for product in product_list %}
+                <div class="item col-lg-3">
+                    <img src="{% if product.image %}{{product.image}}{% endif %}" alt="">
+                    <p>{{product.name}}</p>
+                    <h4>{{product.price}} so'm</h4>
+                    <div class="item_buttons">
+                        <a href="{{product.get_absolute_url}}">Batafsil</a>
+                    </div>
+                    <div class="dropdown_div">
+                        <form action="{% url "cart:cart_add" product.id %}" method="post">
+                            {% csrf_token %}
+                            {{ cart_product_form }}
+                            <select name="quantity" class="form-control" id="id_quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                            <h5>{{product.measurement}}</h5>
+                            <input type="hidden" name="update" value="False" id="id_update">
+                            <input type="submit" value="xaridga qo'shish">
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock content %}

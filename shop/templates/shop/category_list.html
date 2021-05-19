@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Category List{% endblock title %}
+
+{% block content %}
+
+    <main>
+
+        <section class="all_categories">
+            <div class="container-fluid">
+                <div class="category_wrap">
+                    {% for category in category_list %}
+                    <div class="full">
+                        <a href="{{ category.get_absolute_url }}">
+                            <h4 class="full_text">{{ category.name }}</h4>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+        </section>
+
+
+    </main>
+{% endblock content %}

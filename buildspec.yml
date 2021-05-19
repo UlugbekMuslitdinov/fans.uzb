@@ -1,0 +1,9 @@
+version: '3.9'
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      - python manage.py collectstatic --noinput
+      - gunicorn ecommerce.wsgi

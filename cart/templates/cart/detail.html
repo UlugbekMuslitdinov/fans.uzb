@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+    <main>
+        <section class="korzina_div">
+            <div class="container">
+                <h4>Hozir savatchada :</h4>
+                <div class="kor_div_wrap">
+
+
+                    <!-- Это надо копировать от сюда -->
+                    {% for item in cart %}
+                    {% with product=item.product  %}
+                    <div class="kor_div col-lg-6">
+                        <div class="kor_img">
+                            <img src="{% if product.image %} {{ product.image }} {% endif %}" alt="">
+                        </div>
+                        <div class="kor_content">
+                            <h2>{{product.name}}</h2>
+                            <!-- <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                {% csrf_token %}
+                                <span style="display:inline-block">    
+                                    {{ item.update_quantity_form.quantity }}
+                                    {{ item.update_quantity_form.update }}
+                                    <input type="submit" value="Изменить">
+                                </span>
+                            </form> -->
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                {% csrf_token %}
+                                <label for="">Ko'pligi : </label>
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.update }}
+                                {{item.measurement}}
+                                <input type="submit" value="Tahrirlash">
+                            </form>
+                            <div class="button_del">
+                                <a class="del" href="{% url "cart:cart_remove" product.id %}">O'chirish</a>
+                                <a class="see" href="{{ product.get_absolute_url }}">Qarang</a>
+                            </div>
+                            <h4>Bitta buyum narxi : <span class="one_price">{{item.price}}</span></h4>
+                            <h4>Narx : <span class="price">{{item.total_price}}</span></h4>
+                        </div>
+                    </div>
+                    {% endwith %}
+                    {% endfor %}
+                    <!-- До Сюда -->
+                    
+
+
+                </div>
+                <div class="total">
+                    <h2>Umumiy qiymati : <span class="total_price">{{ cart.get_total_price }}</span></h2>
+                </div>
+
+                <div class="zakaz">
+                    <a class="continue" href="{% url "shop:category_list" %}">Xarid qilishni davom eting</a>
+                    <a class="arrange" href="{% url "orders:order_create" %}">Tekshirib ko'rmoq</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock content %}
+    

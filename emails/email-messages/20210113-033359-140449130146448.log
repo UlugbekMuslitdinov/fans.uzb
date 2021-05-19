@@ -1,0 +1,21 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: 
+ =?utf-8?b?W2V4YW1wbGUuY29tXSDQn9C40YHRjNC80L4g0LTQu9GPINGB0LHRgNC+0YHQsCA=?=
+ =?utf-8?b?0L/QsNGA0L7Qu9GP?=
+From: webmaster@localhost
+To: ulugbekmuslitdinov@gmail.com
+Date: Wed, 13 Jan 2021 03:33:59 -0000
+Message-ID: <161050883922.13.13092410747383822301@132e0172b1f9>
+
+Hello from example.com!
+
+You're receiving this e-mail because you or someone else has requested a password for your user account.
+It can be safely ignored if you did not request a password reset. Click the link below to reset your password.
+
+http://127.0.0.1:8000/accounts/password/reset/key/3-age9wm-2661603eabdf9522786b363314b3d568/
+
+Благодарим вас за использование сайта «example.com!»
+example.com
+-------------------------------------------------------------------------------

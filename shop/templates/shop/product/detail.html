@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <div class="container">
+        <div class="row" style="margin-bottom: 5%;">
+            <div class="col-sm-4">
+                    <img src="{{ product.image.url }}" alt="" style="width: 100%">
+            </div>
+            <div class="col-sm-8">
+                <h1>{{ product.title }}</h1>
+                <p>{{ product.description | safe }}</p>
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                        {% csrf_token %}
+                        {{ cart_product_form }}
+                        <input type="submit" value="add to cart" class="btn btn-outline-danger">
+                    </form>
+                <button type="button" value="Previous Page" class="btn btn-outline-warning" onClick="window.history.back();return false;">
+                    Назад
+                </button>
+            </div>
+        </div>
+        
+    <div class="btn-group" role="group" aria-label="...">
+        {% for category in category_list %}
+            <a class="btn btn-outline-secondary" href="{{ category.get_absolute_url }}" role="button" style="margin-left: 10px;">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div> -->
+<main>
+    
+
+    
+    <section class="tovar">
+        <div class="container">
+            <div class="tovar_left col-lg-6">
+                <div class="tovar_img">
+                    <img src="{{ product.image }}" alt="">
+                </div>
+            </div>
+            <div class="tovar_right col-lg-6">
+                <h1>{{ product.name }}</h1>
+                <h2 class="price">{{product.price}}<span>so'm</span></h2>
+                <p>{{ product.description }}</p>
+                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                    <div class="row form_row">
+                        {% csrf_token %}
+                        {{ cart_product_form }}
+                        <h5>{{product.measurement}}</h5>
+                    </div>
+                    <input type="submit" value="Savatchaga qo'shish" class="btn btn-outline-danger">
+                </form>              
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}
